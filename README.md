@@ -13,6 +13,8 @@ I wanted to make a super simple utility with these features:
 * Last but not least: no macros
 
 # Example
+In this section, a few examples with the generated assembly.\
+Compiler used: ARM gcc 11.2.1 (none), flags `-std=c++14 -O3`
 
 ```cpp
 #include <mabe/register.hpp>
@@ -21,10 +23,6 @@ I wanted to make a super simple utility with these features:
 namespace my_regs {
 using reg32 = RegU32<0x1000>;
 using reg8 = RegU8<0x1004>;
-}  // namespace my_regs
-
-my_regs::reg8::set_bits<0, 7>();
-my_regs::reg8::clear_all();
 }
 ```
 
@@ -34,7 +32,7 @@ my_regs::reg8::clear_all();
 my_regs::reg32::set_all();
 ```
 
-ARM32 assembly:
+ARM assembly:
 
 ```asm
 mov r3, #4096 ; 0x1000
@@ -48,7 +46,7 @@ str r2, [r3]
 my_regs::reg32::set_bits<2, 3, 31>();
 ```
 
-ARM32 assembly:
+ARM assembly:
 
 ```asm
 mov r2, #4096            ; 0x1000
@@ -63,7 +61,7 @@ str r3, [r2]
 my_regs::reg8::clear_bit<1>();
 ```
 
-ARM32 assembly:
+ARM assembly:
 
 ```asm
 mov	r2, #4096	; 0x1000
