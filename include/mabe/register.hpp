@@ -52,6 +52,11 @@ public:
     reg() |= mask;
   }
 
+  template <int... BITS> static void clear_bits() noexcept {
+    constexpr auto mask = make_mask<BITS...>();
+    reg() &= ~mask;
+  }
+
   template <int BIT> static void clear_bit() noexcept {
     static_assert(BIT < sizeof(T) * 8U, "Out of bound");
     reg() &= ~T{T(1) << BIT};

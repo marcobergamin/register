@@ -15,4 +15,5 @@ void example() {
   my_regs::reg8::clear_all();
   my_regs::reg8::set_bit<1>();
   my_regs::reg8::clear_bit<1>();
+  my_regs::reg8::clear_bits<1,2>();
 }
